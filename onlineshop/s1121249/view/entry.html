@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link href="../common/css/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>アカウント作成</h1>
+    <h2>会員登録を行うため、以下の必要事項を入力してください。</h2>
+
+    <form action="../ctrl/entry.php" method="post">
+      <table class="searchTbl">
+        <tr>
+          <th>ID</th>
+          <td>IDは自動で番号がつきます</td>
+        </tr>
+        <tr>
+          <th>苗字</th>
+          <td>
+            <input
+              type="text"
+              name="last_name"
+              value="<?= $sLastName ?>"
+              placeholder="田中"
+            /><br />
+            <span class="err"
+              ><?= isset($arrErr['last_name']) ? $arrErr['last_name'] : "" ?></span
+            >
+          </td>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <td>
+            <input
+              type="text"
+              name="first_name"
+              value="<?= $sFirstName ?>"
+              placeholder="花子"
+            /><br />
+            <span class="err"
+              ><?= isset($arrErr['first_name']) ? $arrErr['first_name'] : "" ?></span
+            >
+          </td>
+        </tr>
+        <tr>
+          <th>郵便番号(ハイフン無し)</th>
+          <td>
+            <input
+              type="text"
+              name="postal"
+              value="<?= $sPostal ?>"
+              placeholder="0001111"
+            /><br />
+            <span class="err"
+              ><?= isset($arrErr['postal']) ? $arrErr['postal'] : "" ?></span
+            >
+          </td>
+        </tr>
+
+        <tr>
+          <th>住所</th>
+          <td>
+            <input
+              type="text"
+              name="address"
+              value="<?= $sAddress ?>"
+              placeholder="東京都渋谷区1-1-1"
+            /><br />
+            <span class="err"
+              ><?= isset($arrErr['address']) ? $arrErr['address'] : "" ?></span
+            >
+          </td>
+        </tr>
+
+        <th>電話番号(ハイフン無し)</th>
+        <td>
+          <input
+            type="text"
+            name="tel"
+            value="<?= $sTel ?>"
+            placeholder="00011112222"
+          /><br />
+          <span class="err"
+            ><?= isset($arrErr['tel']) ? $arrErr['tel'] : "" ?></span
+          >
+        </td>
+      </tr>
+
+      <th>メールアドレス</th>
+        <td>
+          <input
+            type="text"
+            name="login_id"
+            value="<?= $sLoginId ?>"
+            placeholder="hanako@gmail.com"
+          /><br />
+          <span class="err"
+            ><?= isset($arrErr['login_id']) ? $arrErr['login_id'] : "" ?></span
+          >
+        </td>
+      </tr>
+
+      <th>パスワード</th>
+        <td>
+          <input
+            type="text"
+            name="login_pass"
+            value="<?= $sLoginPass ?>"
+          /><br />
+          <span class="err"
+            ><?= isset($arrErr['login_pass']) ? $arrErr['login_pass'] : "" ?></span
+          >
+        </td>
+
+      </table>
+
+      <div class="btnArea">
+        <input type="submit" value="入力確認" />
+        <input type="hidden" name="step" value="1" />
+      </div>
+    </form>
+
+    <a href="index.php">トップページへ戻る</a><br />
+  </body>
+</html>

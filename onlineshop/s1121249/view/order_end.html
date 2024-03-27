@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>購入完了</h1>
+	<?php if($loginOk === true){ ?>
+	<div>ようこそ！ <?= $userName ?> 様</div>
+	<?php } ?>
+	<div>
+		<a href="index.php">商品一覧へ</a> | 
+		<a href="logout.php">ログアウト</a>
+	</div>
+
+	<div>ありがとうございます。商品到着までお待ちください。</div>
+
+	<br />
+	<br />
+	<div>
+		<a href="index.php">トップページへ戻る</a>
+	</div>
+
+</body>
+</html>

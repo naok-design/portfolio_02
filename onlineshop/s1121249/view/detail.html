@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link href="../common/css/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>商品詳細</h1>
+    <?php if($loginOk === true){ ?>
+    <div>
+      ようこそ！
+      <?= $userName ?>
+      様
+    </div>
+    <?php } ?>
+
+    <?php if ($loginOk === true){ ?>
+    <div>
+      <a href="cart.php">カート（<?= $cartCnt; ?>件）</a> |
+      <a href="logout.php">ログアウト</a>
+    </div>
+    <?php } else { ?>
+    <div>
+      <a href="login.php">ログイン</a>
+    </div>
+    <?php } ?>
+
+    <h2><?= $arrItem["item_name"] ?></h2>
+    <table>
+      <tr>
+        <td>
+          <img
+            src="../photo/<?= $arrItem['item_id']; ?>.jpg"
+            style="width: 160px"
+          />
+        </td>
+        <td>
+          <div style="color: red">
+            <?= number_format($arrItem["item_price"]) ?>円
+          </div>
+          <div>残り：<?= $arrItem["item_stock"] ?></div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <?= $arrItem["category_name"] ?>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <?= $arrItem["item_exp"] ?>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <form action="?item_id=<?= $arrItem['item_id'] ?>" method="post">
+            数量：
+            <select name="item_num">
+              <?php for ($i = 1; $i < $arrItem['item_stock']; $i++){ ?>
+              <option value="<?= $i ?>"><?= $i ?></option>
+              <?php } ?>
+            </select>
+            <input type="submit" value="カートへ入れる" />
+          </form>
+          <div style="color: red">
+            <?php print $resultMsg; ?>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br />
+    <br />
+    <div>
+      <a href="index.php">トップページへ戻る</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link href="../common/css/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>アカウント登録確認</h1>
+    <h2>アカウント情報</h2>
+
+    <form action="../ctrl/entry.php" method="post">
+      <table class="searchTbl">
+        <tr>
+          <th>ID</th>
+          <td>IDは自動で番号がつきます</td>
+        </tr>
+        <tr>
+          <th>苗字</th>
+          <td>
+            <?= $sLastName ?>
+            <input type="hidden" name="last_name" value="<?= $sLastName ?>" />
+          </td>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <td>
+            <?= $sFirstName ?>
+            <input type="hidden" name="first_name" value="<?= $sFirstName ?>" />
+          </td>
+        </tr>
+        <th>郵便番号</th>
+          <td>
+            <?= $sPostal ?>
+            <input type="hidden" name="postal" value="<?= $sPostal ?>" />
+          </td>
+        </tr>
+        <th>住所</th>
+          <td>
+            <?= $sAddress ?>
+            <input type="hidden" name="address" value="<?= $sAddress ?>" />
+          </td>
+        </tr>
+        <th>電話番号</th>
+          <td>
+            <?= $sTel ?>
+            <input type="hidden" name="tel" value="<?= $sTel ?>" />
+          </td>
+        </tr>
+        <th>メールアドレス</th>
+          <td>
+            <?= $sLoginId ?>
+            <input type="hidden" name="login_id" value="<?= $sLoginId ?>" />
+          </td>
+        </tr>
+        <th>パスワード</th>
+          <td>
+            <?= $sLoginPass ?>
+            <input type="hidden" name="login_pass" value="<?= $sLoginPass ?>" />
+          </td>
+        </tr>
+      </table>
+
+      <div class="btnArea clearfix">
+        <input
+          type="button"
+          class="btn"
+          value="修正"
+          onclick="javascript:history.back();"
+        />
+        <input type="submit" class="btn" value="登録" />
+        <input type="hidden" name="step" value="2" />
+      </div>
+    </form>
+
+    <a href="index.php">トップページへ戻る</a><br />
+  </body>
+</html>

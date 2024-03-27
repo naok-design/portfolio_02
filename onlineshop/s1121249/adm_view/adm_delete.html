@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link href="../common/css/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="../common/css/main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1 class="notice">会員の削除</h1>
+    <h2>会員情報</h2>
+
+    <form action="../adm_ctrl/adm_delete.php" method="post">
+      <table class="searchTbl">
+        <tr>
+          <th>ID</th>
+          <td>
+            <?= $sMemberId ?>
+            <input type="hidden" name="id" value="<?= $sMemberId ?>" />
+          </td>
+        </tr>
+        <tr>
+          <th>苗字</th>
+          <td>
+            <?= $sLastName ?>
+          </td>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <td>
+            <?= $sFirstName ?>
+          </td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td>
+            <?= $sPostal ?>
+          </td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td>
+            <?= $sAddress ?>
+          </td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td>
+            <?= $sTel ?>
+          </td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td>
+            <?= $sLoginId ?>
+          </td>
+        </tr>
+        <tr>
+          <th>パスワード</th>
+          <td>
+            <?= $sLoginPass ?>
+          </td>
+        </tr>
+      </table>
+
+      <div class="btnArea clearfix">
+        <input
+          type="button"
+          class="btn"
+          value="中止"
+          onclick="javascript:history.back();"
+        />
+        <input type="submit" class="btn" value="削除" />
+        <input type="hidden" name="step" value="1" />
+      </div>
+    </form>
+
+    <a href="../adm_ctrl/adm_member.php">会員一覧へ戻る</a><br />
+  </body>
+</html>

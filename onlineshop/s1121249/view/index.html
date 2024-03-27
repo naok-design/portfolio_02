@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link href="../common/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../common/css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>商品一覧</h1>
+	<?php if($loginOk === true){ ?>
+	<div>ようこそ！ <?= $userName ?> 様</div>
+	<?php } ?>
+
+	<?php if ($loginOk === true){ ?>
+	<div>
+		<a href="cart.php">カート（<?php print $cartCnt; ?>件）</a> | 
+		<a href="logout.php">ログアウト</a> | 
+		<a href="../ctrl/help.php">ヘルプはこちら</a>
+	</div>
+	<?php } else { ?>
+	<div>
+		<a href="login.php">ログイン</a>
+	</div>
+	<div>
+		<a href="entry.php">会員登録がお済みでない方はこちら</a>
+	</div>
+	<div>
+		<a href="../ctrl/help.php">ヘルプはこちら</a>
+	</div>
+	<?php } ?>
+
+	<h2>検索条件</h2>
+	<form action="index.php" method="post">
+		<table class="searchTbl">
+			<tr>
+				<th>商品名</th>
+				<td><input type="text" name="keyword" value="<?= $sKeyword ?>" /></td>
+			</tr>
+			<tr>
+				<th>カテゴリ</th>
+				<td>
+					<select name="category_id">
+						<option value=""></option>
+						<?php foreach ($arrCategory as $arr){ ?>
+						<option value="<?php print $arr['category_id']; ?>" <?php if($arr['category_id'] == $nCateId){ print "selected"; } ?>>
+							<?php print $arr['category_name']; ?>
+						</option>
+						<?php } ?>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<div class="btnArea">
+			<input type="submit" value="検索" />
+		</div>
+	</form>
+	<br />
+
+	<h2>商品一覧</h2>
+	<table class="resultTbl">
+	<tr>
+		<th>画像</th>
+		<th>商品名</th>
+		<th>カテゴリ</th>
+		<th>価格</th>
+		<?php if ($loginOk === true){ ?>
+		<th>カート</th>
+		<?php } ?>
+	</tr>
+	<?php foreach ($arrItem as $data){ ?>
+	<tr>
+		<td><img src="../photo/<?php print $data['item_id']; ?>.jpg" style="width:200px;"></td>
+		<td><a href="detail.php?item_id=<?php print $data['item_id']; ?>">
+				<?php print $data['item_name']; ?>
+			</a>
+		</td>
+		<td><?php print $data['category_name']; ?></td>
+		<td><?php print number_format($data['item_price']); ?>円</td>
+		<?php if ($loginOk === true){ ?>
+		<td>
+			<form action="index.php" method="post">
+				<select name="item_num">
+				<?php for ($i = 1; $i < $data['item_stock']; $i++){ ?>
+				<option value="<?php print $i; ?>"><?php print $i; ?></option>
+				<?php } ?>
+				</select>
+				<input type="hidden" name="item_id" value="<?php print $data['item_id']; ?>">
+				<input type="submit" value="カートへ入れる">
+			</form>
+			<?php if ($data['item_id'] == $nItemId){ ?>
+			<div style="color:red">
+				<?php print $resultMsg; ?>
+			</div>
+			<?php } ?>
+		</td>
+		<?php } ?>
+	</tr>
+	<?php } ?>
+	</table>
+	
+</body>
+</html>
